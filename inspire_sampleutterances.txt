@@ -1,0 +1,5 @@
+InspireMeIntent inspire me
+InspireMeIntent inspire
+InspireMeIntent give me inspiration
+InspireMeIntent give me some inspiration
+InspireMeIntent pump me up
