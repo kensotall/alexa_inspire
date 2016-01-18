@@ -1,13 +1,7 @@
 {
   "intents": [
     {
-      "intent": "InspireMeIntent",
-      "slots": [
-        {
-          "name": "Inspiration",
-          "type": "LIST_OF_INSPIRATION"
-        }
-      ]
+      "intent": "InspireMeIntent"
     },
     {
       "intent": "AMAZON.HelpIntent"

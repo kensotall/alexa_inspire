@@ -10,7 +10,11 @@ Inspire -- Provide daily inspiration to lift everyone up.
 from __future__ import print_function
 from random import randint
 
-NUM_INSPIRATIONS = 2
+inspiration = [
+        "Isn't Alyssa the best wife ever?",
+        'Wow, Stevie is just so furry!',
+        'Knowing is not enough, we must apply. Willing is not enough, we must do.'
+        ]
 
 def lambda_handler(event, context):
     """ Route the incoming request based on type (LaunchRequest, IntentRequest,
@@ -23,7 +27,7 @@ def lambda_handler(event, context):
     Skill's application ID to prevent someone else from configuring a skill that 
     sends requests to this function.
     """
-     if (event['session']['application']['applicationId'] !=
+    if (event['session']['application']['applicationId'] !=
              "amzn1.echo-sdk-ams.app.4fe4a004-d42c-418d-82dd-cab81b8d8ada"):
          raise ValueError("Invalid Application ID")
 
@@ -86,12 +90,12 @@ def on_session_ended(session_ended_request, session):
 
 # --------------- Functions that control the skill's behavior ------------------
 
-def get_inspiration(intent, session):
-    card_title = intent['name']
-    rand_index = randint(0, NUM_INSPIRATIONS-1)
-    speech_output = intent['slots']['Inspiration'][rand_index]
+def get_inspiration():
+    session_attributes = {}
+    card_title = 'Inspire - by Ken'
+    rand_index = randint(0, len(inspiration)-1)
+    speech_output = inspiration[rand_index] 
     reprompt_text = ""
-
     should_end_session = True
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
@@ -103,13 +107,11 @@ def get_welcome_response():
     add those here
     """
     session_attributes = {}
-    card_title = "Ken's Inspire"
-    rand_index = randint(0, NUM_INSPIRATIONS-1)
+    card_title = 'Inspire - by Ken'
+    rand_index = randint(0, len(inspiration)-1)
     speech_output = "Welcome to the Ken's Inspire App. " \
-                    "Here is today's inspiration." +
-                    intent['slots']['Inspiration'][rand_index]
+                    "Here is today's inspiration. " + inspiration[rand_index]
     reprompt_text = ""
-
     should_end_session = True
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
