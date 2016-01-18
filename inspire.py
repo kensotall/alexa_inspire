@@ -109,7 +109,7 @@ def get_welcome_response():
     session_attributes = {}
     card_title = 'Inspire - by Ken'
     rand_index = randint(0, len(inspiration)-1)
-    speech_output = "Welcome to the Ken's Inspire App. " \
+    speech_output = "Welcome to Ken's Inspire App. " \
                     "Here is today's inspiration. " + inspiration[rand_index]
     reprompt_text = ""
     should_end_session = True
